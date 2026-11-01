@@ -1,0 +1,36 @@
+; Staff softphone extensions for live transfers (optional). Rendered by
+; render-config.sh; passwords come from .env (STAFF_201_PASSWORD, ...).
+; Use TLS + SRTP if staff connect over the internet.
+
+[staff-endpoint](!)
+type = endpoint
+transport = transport-udp
+context = from-staff
+disallow = all
+allow = ulaw,alaw
+dtmf_mode = rfc4733
+direct_media = no
+rtp_symmetric = yes
+force_rport = yes
+rewrite_contact = yes
+device_state_busy_at = 1
+
+[staff-aor](!)
+type = aor
+max_contacts = 2
+remove_existing = yes
+
+[staff-auth](!)
+type = auth
+auth_type = userpass
+
+[staff201](staff-endpoint)
+auth = staff201
+aors = staff201
+callerid = "Staff 201" <201>
+[staff201](staff-aor)
+[staff201](staff-auth)
+username = staff201
+password = ${STAFF_201_PASSWORD}
+
+; Then: STAFF_DIAL_TARGETS=PJSIP/staff201&PJSIP/staff202 in .env

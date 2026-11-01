@@ -1,0 +1,10 @@
+; ARI user for the voice agent. Template — render-config.sh fills the password
+; from .env (ARI_USER / ARI_PASSWORD). Never commit the rendered file.
+[general]
+enabled = yes
+pretty = no
+
+[${ARI_USER}]
+type = user
+read_only = no
+password = ${ARI_PASSWORD}

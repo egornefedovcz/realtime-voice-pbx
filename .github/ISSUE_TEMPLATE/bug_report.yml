@@ -1,0 +1,30 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Please remove phone numbers, API keys, SIP credentials and call transcripts before posting."
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport
+      options: [yeastar, asterisk-ari, asterisk-audiosocket, twilio, core / not transport related]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log lines (redacted)
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: "node 20.x, Asterisk 20.x / Yeastar P-Series firmware, realtime-voice-pbx 0.1.0"

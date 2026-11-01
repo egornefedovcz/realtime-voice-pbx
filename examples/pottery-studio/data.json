@@ -1,0 +1,16 @@
+{
+  "customers": [
+    { "name": "Jane Example", "phone": "+1 555 0100", "email": "jane@example.com" },
+    { "name": "Tomás Sample", "phone": "+1 555 0142", "email": "tomas@example.org" }
+  ],
+  "orders": [
+    { "number": "100234", "phone": "+1 555 0100", "date": "2026-10-28", "status": "paid", "items": ["Wheel throwing for beginners, 2 seats"], "classDate": "2026-11-14 18:00" },
+    { "number": "100251", "phone": "+1 555 0142", "date": "2026-10-30", "status": "awaiting payment", "items": ["Gift voucher 80 USD"] }
+  ],
+  "classes": [
+    { "date": "2026-11-07", "time": "18:00", "title": "Wheel throwing for beginners", "seatsLeft": 3, "priceUsd": 65 },
+    { "date": "2026-11-09", "time": "10:00", "title": "Hand-building: mugs and bowls", "seatsLeft": 6, "priceUsd": 55 },
+    { "date": "2026-11-14", "time": "18:00", "title": "Wheel throwing for beginners", "seatsLeft": 0, "priceUsd": 65 },
+    { "date": "2026-11-21", "time": "17:00", "title": "Glazing workshop", "seatsLeft": 8, "priceUsd": 45 }
+  ]
+}

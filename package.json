@@ -1,0 +1,25 @@
+{
+  "name": "realtime-voice-pbx",
+  "version": "0.1.0",
+  "description": "Put an OpenAI Realtime voice agent on your phone line: Yeastar, Asterisk (ARI or AudioSocket) and Twilio transports, barge-in, caller lookup, live transfer, escalation and call transcripts.",
+  "main": "packages/core/index.js",
+  "bin": { "realtime-voice-pbx": "bin/start.js" },
+  "scripts": {
+    "start": "node bin/start.js",
+    "test": "node --test test/*.test.js",
+    "check": "find . -name '*.js' -not -path './node_modules/*' -print0 | xargs -0 -n1 node --check",
+    "transcribe": "node tools/call-transcripts/transcribe.js",
+    "digest": "node tools/call-transcripts/weekly-digest.js"
+  },
+  "engines": { "node": ">=18.17" },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ws": "^8.18.0"
+  },
+  "optionalDependencies": {
+    "nodemailer": "^6.9.16"
+  },
+  "keywords": ["openai", "realtime", "voice-agent", "asterisk", "yeastar", "pbx", "sip", "telephony", "ai-phone"],
+  "author": "Egor Nefedov",
+  "license": "MIT"
+}

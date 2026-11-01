@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+tools/call-transcripts/data/
+tools/call-transcripts/digest.html
+recordings/
+*.wav
+*.mp3
+.DS_Store
+coverage/

@@ -1,0 +1,54 @@
+; Generic SIP trunk with registration. Rendered by render-config.sh from .env:
+;   SIP_SERVER, SIP_USER, SIP_PASSWORD, SIP_TRANSPORT, SIP_PROVIDER_CIDR
+; Never put the password here by hand and never commit the rendered file.
+;
+; You also need a transport section, e.g. in pjsip.conf:
+;   [transport-udp]
+;   type = transport
+;   protocol = udp
+;   bind = 0.0.0.0:5060
+; and a firewall that only lets your provider's IP ranges reach SIP/RTP.
+
+[trunk-reg]
+type = registration
+transport = ${SIP_TRANSPORT}
+outbound_auth = trunk-auth
+server_uri = sip:${SIP_SERVER}
+client_uri = sip:${SIP_USER}@${SIP_SERVER}
+contact_user = ${SIP_USER}
+retry_interval = 60
+forbidden_retry_interval = 900
+expiration = 600
+line = yes
+endpoint = trunk
+
+[trunk-auth]
+type = auth
+auth_type = userpass
+username = ${SIP_USER}
+password = ${SIP_PASSWORD}
+
+[trunk]
+type = aor
+contact = sip:${SIP_SERVER}
+
+[trunk]
+type = endpoint
+transport = ${SIP_TRANSPORT}
+context = from-trunk
+disallow = all
+allow = ulaw,alaw
+outbound_auth = trunk-auth
+aors = trunk
+from_user = ${SIP_USER}
+from_domain = ${SIP_SERVER}
+dtmf_mode = rfc4733
+direct_media = no
+rtp_symmetric = yes
+force_rport = yes
+rewrite_contact = yes
+
+[trunk-identify]
+type = identify
+endpoint = trunk
+match = ${SIP_PROVIDER_CIDR}
